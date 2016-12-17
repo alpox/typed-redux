@@ -1,8 +1,10 @@
+import { Increment, Decrement } from '../actions'
+
 export default (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
+  switch (action.constructor) {
+    case Increment:
       return state + 1
-    case 'DECREMENT':
+    case Decrement:
       return state - 1
     default:
       return state

@@ -1,10 +1,10 @@
 # Contributing
 
-We are open to, and grateful for, any contributions made by the community. By contributing to Redux, you agree to abide by the [code of conduct](https://github.com/reactjs/redux/blob/master/CODE_OF_CONDUCT.md).
+We are open to, and grateful for, any contributions made by the community. By contributing to Redux, you agree to abide by the [code of conduct](https://github.com/jas-chen/typed-redux/blob/master/CODE_OF_CONDUCT.md).
 
 ## Reporting Issues and Asking Questions
 
-Before opening an issue, please search the [issue tracker](https://github.com/reactjs/redux/issues) to make sure your issue hasn't already been reported.
+Before opening an issue, please search the [issue tracker](https://github.com/jas-chen/typed-redux/issues) to make sure your issue hasn't already been reported.
 
 ### Bugs and Improvements
 
@@ -28,17 +28,17 @@ Please keep in mind that people spend their free time trying to help you. You ca
 
 ## Development
 
-Visit the [issue tracker](https://github.com/reactjs/redux/issues) to find a list of open issues that need attention.
+Visit the [issue tracker](https://github.com/jas-chen/typed-redux/issues) to find a list of open issues that need attention.
 
 Fork, then clone the repo:
 
 ```
-git clone https://github.com/your-username/redux.git
+git clone https://github.com/your-username/typed-redux.git
 ```
 
 ### Building
 
-#### Building Redux
+#### Building Typed Redux
 
 Running the `build` task will create both a CommonJS module-per-module build and a UMD build.
 ```
@@ -133,7 +133,7 @@ npm run docs:clean
 
 ### Examples
 
-Redux comes with [official examples](http://redux.js.org/docs/introduction/Examples.html) to demonstrate various concepts and best practices.
+Typed Redux comes with [official examples](https://github.com/jas-chen/typed-redux/tree/master/examples) to demonstrate various concepts and best practices.
 
 When adding a new example, please adhere to the style and format of the existing examples, and try to reuse as much code as possible.  For example, `index.html`, `server.js`, and `webpack.config.js` can typically be reused.
 
@@ -148,7 +148,7 @@ npm run test:examples
 
 Not all examples have tests. If you see an example project without tests, you are very welcome to add them in a way consistent with the examples that have tests.
 
-Please visit the [Examples page](http://redux.js.org/docs/introduction/Examples.html) for information on running individual examples.
+Please visit the [Examples page](https://github.com/jas-chen/typed-redux/tree/master/examples) for information on running individual examples.
 
 ### Sending a Pull Request
 
@@ -158,7 +158,7 @@ On the other hand, sometimes the best way to start a conversation *is* to send a
 
 In general, the contribution workflow looks like this:
 
-* Open a new issue in the [Issue tracker](https://github.com/reactjs/redux/issues).
+* Open a new issue in the [Issue tracker](https://github.com/jas-chen/typed-redux/issues).
 * Fork the repo.
 * Create a new feature branch based off the `master` branch.
 * Make sure all tests pass and there are no linting errors.

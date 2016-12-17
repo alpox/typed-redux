@@ -1,4 +1,3 @@
-import isPlainObject from 'lodash/isPlainObject'
 import $$observable from 'symbol-observable'
 
 /**
@@ -129,17 +128,15 @@ export default function createStore(reducer, preloadedState, enhancer) {
    * be considered the **next** state of the tree, and the change listeners
    * will be notified.
    *
-   * The base implementation only supports plain object actions. If you want to
+   * The base implementation supports object actions. If you want to
    * dispatch a Promise, an Observable, a thunk, or something else, you need to
    * wrap your store creating function into the corresponding middleware. For
    * example, see the documentation for the `redux-thunk` package. Even the
    * middleware will eventually dispatch plain object actions using this method.
    *
-   * @param {Object} action A plain object representing “what changed”. It is
+   * @param {Object} action An object representing “what changed”. It is
    * a good idea to keep actions serializable so you can record and replay user
-   * sessions, or use the time travelling `redux-devtools`. An action must have
-   * a `type` property which may not be `undefined`. It is a good idea to use
-   * string constants for action types.
+   * sessions, or use the time travelling `redux-devtools`.
    *
    * @returns {Object} For convenience, the same action object you dispatched.
    *
@@ -147,17 +144,10 @@ export default function createStore(reducer, preloadedState, enhancer) {
    * return something else (for example, a Promise you can await).
    */
   function dispatch(action) {
-    if (!isPlainObject(action)) {
+    if (!(action instanceof Object)) {
       throw new Error(
-        'Actions must be plain objects. ' +
+        'Actions must be objects. ' +
         'Use custom middleware for async actions.'
-      )
-    }
-
-    if (typeof action.type === 'undefined') {
-      throw new Error(
-        'Actions may not have an undefined "type" property. ' +
-        'Have you misspelled a constant?'
       )
     }
 

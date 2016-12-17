@@ -414,18 +414,32 @@ describe('createStore', () => {
     store.dispatch(addTodo('Hello'))
   })
 
-  it('only accepts plain object actions', () => {
+  it('accepts plain objects and class instances actions', () => {
     const store = createStore(reducers.todos)
     expect(() =>
       store.dispatch(unknownAction())
     ).not.toThrow()
 
     function AwesomeMap() { }
-    [ null, undefined, 42, 'hey', new AwesomeMap() ].forEach(nonObject =>
-      expect(() =>
-        store.dispatch(nonObject)
-      ).toThrow(/plain/)
-    )
+    expect(() =>
+      store.dispatch(new AwesomeMap())
+    ).not.toThrow()
+
+    expect(() =>
+      store.dispatch(null)
+    ).toThrow(/objects/)
+
+    expect(() =>
+      store.dispatch(undefined)
+    ).toThrow(/objects/)
+
+    expect(() =>
+      store.dispatch(42)
+    ).toThrow(/objects/)
+
+    expect(() =>
+      store.dispatch('hey')
+    ).toThrow(/objects/)
   })
 
   it('handles nested dispatches gracefully', () => {
@@ -470,20 +484,6 @@ describe('createStore', () => {
     expect(() =>
       store.dispatch(unknownAction())
     ).not.toThrow()
-  })
-
-  it('throws if action type is missing', () => {
-    const store = createStore(reducers.todos)
-    expect(() =>
-      store.dispatch({})
-    ).toThrow(/Actions may not have an undefined "type" property/)
-  })
-
-  it('throws if action type is undefined', () => {
-    const store = createStore(reducers.todos)
-    expect(() =>
-      store.dispatch({ type: undefined })
-    ).toThrow(/Actions may not have an undefined "type" property/)
   })
 
   it('does not throw if action type is falsy', () => {

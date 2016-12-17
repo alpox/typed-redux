@@ -10,7 +10,7 @@ var config = {
     ]
   },
   output: {
-    library: 'Redux',
+    library: 'TypedRedux',
     libraryTarget: 'umd'
   },
   plugins: [

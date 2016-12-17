@@ -1,7 +1,7 @@
 import {
   Reducer, Action, combineReducers,
   ReducersMapObject
-} from "../../index.d.ts";
+} from "../../index";
 
 
 type TodosState = string[];
@@ -10,35 +10,34 @@ interface AddTodoAction extends Action {
   text: string;
 }
 
+class AddTodo implements AddTodoAction {
+  constructor(readonly text: string) {}
+}
 
 const todosReducer: Reducer<TodosState> = (state: TodosState,
                                            action: Action): TodosState => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [...state, (<AddTodoAction>action).text]
-    default:
-      return state
+  if (action instanceof AddTodo) {
+    return [...state, action.text]
   }
+
+  return state
 }
 
-const todosState: TodosState = todosReducer([], {
-  type: 'ADD_TODO',
-  text: 'test',
-});
+const todosState: TodosState = todosReducer([], new AddTodo('test'));
 
 
 type CounterState = number;
 
+class Increment implements Action {}
 
 const counterReducer: Reducer<CounterState> = (
   state: CounterState, action: Action
 ): CounterState => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    default:
-      return state
+  if (action instanceof Increment) {
+    return state + 1
   }
+
+  return state
 }
 
 
@@ -53,7 +52,4 @@ const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   counter: counterReducer,
 })
 
-const rootState: RootState = rootReducer(undefined, {
-  type: 'ADD_TODO',
-  text: 'test',
-})
+const rootState: RootState = rootReducer(undefined, new AddTodo('test'))

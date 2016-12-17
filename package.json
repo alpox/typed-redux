@@ -1,7 +1,7 @@
 {
-  "name": "redux",
-  "version": "3.6.0",
-  "description": "Predictable state container for JavaScript apps",
+  "name": "typed-redux",
+  "version": "3.6.0-rc.4",
+  "description": "Typed Redux",
   "browser": "dist/redux.js",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -27,20 +27,20 @@
     "check:examples": "npm run build:examples && npm run lint:examples && npm run test:examples",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/redux.js",
-    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/redux.min.js",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/typed-redux.js",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/typed-redux.min.js",
     "build:examples": "babel-node examples/buildAll.js",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "prepublish": "npm run clean && npm run check:src && npm run build && check-es3-syntax lib/ dist/ --kill --print",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g reactjs/redux && cp logo/apple-touch-icon.png _book/gitbook/images/apple-touch-icon-precomposed-152.png && cp logo/favicon.ico _book/gitbook/images",
+    "docs:build": "npm run docs:prepare && gitbook build -g jas-chen/typed-redux && cp logo/apple-touch-icon.png _book/gitbook/images/apple-touch-icon-precomposed-152.png && cp logo/favicon.ico _book/gitbook/images",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:reactjs/redux gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:jas-chen/typed-redux gh-pages --force"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactjs/redux.git"
+    "url": "https://github.com/jas-chen/typed-redux.git"
   },
   "keywords": [
     "redux",
@@ -53,17 +53,17 @@
     "live",
     "replay",
     "flux",
-    "elm"
+    "elm",
+    "typescript"
   ],
   "authors": [
-    "Dan Abramov <dan.abramov@me.com> (https://github.com/gaearon)",
-    "Andrew Clark <acdlite@me.com> (https://github.com/acdlite)"
+    "Jas Chen"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/reactjs/redux/issues"
+    "url": "https://github.com/jas-chen/typed-redux/issues"
   },
-  "homepage": "http://redux.js.org",
+  "homepage": "https://github.com/jas-chen/typed-redux",
   "dependencies": {
     "lodash": "^4.2.1",
     "lodash-es": "^4.2.1",
@@ -108,11 +108,11 @@
     "jest": "^15.1.1",
     "rimraf": "^2.3.4",
     "rxjs": "^5.0.0-beta.6",
-    "typescript": "^1.8.0",
-    "typescript-definition-tester": "0.0.4",
+    "typescript": "2.1.4",
+    "typescript-definition-tester": "0.0.5",
     "webpack": "^1.9.6"
   },
-  "npmName": "redux",
+  "npmName": "typed-redux",
   "npmFileMap": [
     {
       "basePath": "/dist/",
