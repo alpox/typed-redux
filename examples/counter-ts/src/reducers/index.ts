@@ -1,6 +1,7 @@
+import { Reducer, Action } from 'typed-redux';
 import { Increment, Decrement } from '../actions/index'
 
-export default (state = 0, action: Object) => {
+const counterReducer: Reducer<number> = (state = 0, action: Action) => {
   if (action instanceof Increment) {
     return state + 1
   }
@@ -11,3 +12,5 @@ export default (state = 0, action: Object) => {
 
   return state
 }
+
+export default counterReducer;

@@ -1,11 +1,17 @@
+import { Reducer, Action } from 'typed-redux';
 import { ChangeName, ChangeRemember } from '../actions';
+
+type State = {
+  name: string,
+  remember: boolean
+};
 
 const initState = {
   name: '',
   remember: true
 };
 
-export default (state = initState, action: Object) => {
+const formReducer: Reducer<State> = (state = initState, action: Action) => {
   if (action instanceof ChangeName) {
     return {...state, name: action.name};
   }
@@ -16,3 +22,5 @@ export default (state = initState, action: Object) => {
 
   return state;
 }
+
+export default  formReducer;
